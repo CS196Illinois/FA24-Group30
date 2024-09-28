@@ -1,8 +1,8 @@
 # Group 30
-Group Name: TEAM_NAME
+Group Name: Group 30
 
-[MVP Link](https://docs.google.com/document/d/1xFI9DDdO5HZAcu36Y6NL-RTDry5E3WHkfy-ZEWuqbXM/edit?usp=sharing)
+[MVP Link]https://docs.google.com/document/d/1uS8rLkDAEBRJIzvQfJ6MCNO_3bYaziRX/edit?usp=sharing&ouid=113000188827383464646&rtpof=true&sd=true
 
-Team Members: yjagtap2,
+Team Members: samikak2
 
 Project Manager: PM_NETID
