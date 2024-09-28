@@ -1,8 +1,8 @@
 # Group TEAM_NUMBER
-Group Name: TEAM_NAME
+Group Name: Group 30
 
-[MVP Link](https://docs.google.com/document/d/1xFI9DDdO5HZAcu36Y6NL-RTDry5E3WHkfy-ZEWuqbXM/edit?usp=sharing)
+[MVP Link](https://docs.google.com/document/d/1uS8rLkDAEBRJIzvQfJ6MCNO_3bYaziRX/edit)
 
-Team Members: STUDENTS_NETIDS
+Team Members: bryan14, samikak2, yjagtap2, agorc
 
-Project Manager: PM_NETID
+Project Manager: ayush9
