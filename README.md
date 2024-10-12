@@ -6,3 +6,9 @@ Group Name: TEAM_NAME
 Team Members: yjagtap2, bryan14, samikak2,
 
 Project Manager: PM_NETID
+
+
+Algo Ideas
+- Keyword Matching
+- Topic Modeling with Bertopic
+- RAG 
