@@ -1,21 +1,44 @@
-import React, { useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
+import React, { useState } from 'react';
+import { parsePDF } from '../utils/parsePDF'; 
 
-const FileUploader = ({ onFileUpload }) => {
-  const onDrop = useCallback((acceptedFiles) => {
-    const file = acceptedFiles[0];
-    onFileUpload(file);  // Send the file to the parent component for processing
-  }, [onFileUpload]);
+const FileUploader = () => {
+  const [resumeDetails, setResumeDetails] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-    accept: '.pdf'
-  });
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      try {
+        const details = await parsePDF(file);
+        setResumeDetails(details);
+        setErrorMessage('');
+      } catch (error) {
+        setErrorMessage('Error parsing PDF: ' + error.message);
+      }
+    }
+  };
 
   return (
-    <div {...getRootProps({ className: 'dropzone' })} style={{ border: '2px dashed gray', padding: '20px', textAlign: 'center' }}>
-      <input {...getInputProps()} />
-      <p>Drag & drop a PDF resume here, or click to select one</p>
+    <div>
+      <input type="file" accept="application/pdf" onChange={handleFileChange} />
+      
+      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+
+      {resumeDetails && (
+        <div>
+          <h3>Name</h3>
+          <p>{resumeDetails.name || 'N/A'}</p>
+
+          <h3>Experience</h3>
+          <p>{resumeDetails.experience || 'N/A'}</p>
+
+          <h3>Projects</h3>
+          <p>{resumeDetails.projects || 'N/A'}</p>
+
+          <h3>Skills</h3>
+          <p>{resumeDetails.skills || 'N/A'}</p>
+        </div>
+      )}
     </div>
   );
 };
