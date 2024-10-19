@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 1.5em;
+  }
+  
+  nav a {
+    margin-left: 10px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .main-content {
+    display: flex;
+    flex-grow: 1;
+  }
+  
+  .professor-list, .dashboard {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .professor-card, .professor-match {
+    background-color: #444;
+    color: white;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .professor-image {
+    background-color: #777;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .upload-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+  }
