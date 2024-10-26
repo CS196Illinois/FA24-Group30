@@ -1,14 +1,8 @@
-# Group 30
+# Group TEAM_NUMBER
 Group Name: TEAM_NAME
 
 [MVP Link](https://docs.google.com/document/d/1xFI9DDdO5HZAcu36Y6NL-RTDry5E3WHkfy-ZEWuqbXM/edit?usp=sharing)
 
-Team Members: yjagtap2, bryan14, samikak2,
+Team Members: STUDENTS_NETIDS
 
 Project Manager: PM_NETID
-
-
-Algo Ideas
-- Keyword Matching
-- Topic Modeling with Bertopic
-- RAG 
