@@ -5,6 +5,7 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import re
+from collections import defaultdict
 
 # Ensure you have downloaded the necessary NLTK resources
 nltk.download('punkt')
@@ -59,12 +60,15 @@ def get_custom_stop_words():
     }
     return custom_stop_words.union(additional_stop_words)
 
-# Define domain-specific keywords for programming
+# Define domain-specific keywords for programming, grouped by category
 def get_technical_keywords():
     return {
-        "javascript", "java", "python", "swift", "c", "firebase", "react", "vue", "html", "css", 
-        "bootstrap", "xcode", "vscode", "api", "algorithm", "iot", "embedded", "arduino", "ml", 
-        "data science", "machine learning", "cloud computing", "agile", "scrum", "devops", "nosql", "sql"
+        "programming_languages": {"javascript", "java", "python", "swift", "c", "c++", "ruby", "go"},
+        "frameworks": {"react", "vue", "angular", "django", "flask", "bootstrap", "sass"},
+        "databases": {"firebase", "mongodb", "mysql", "postgresql", "sqlite"},
+        "tools": {"xcode", "vscode", "git", "docker", "kubernetes"},
+        "methodologies": {"agile", "scrum", "devops", "waterfall", "test-driven"},
+        "concepts": {"api", "algorithm", "iot", "embedded", "machine learning", "data science", "cloud computing"}
     }
 
 # Extract keywords using TF-IDF
@@ -72,27 +76,29 @@ def extract_keywords(text):
     lemmatizer = WordNetLemmatizer()
     tokens = word_tokenize(text)
     lemmatized_tokens = [lemmatizer.lemmatize(token) for token in tokens if token not in get_custom_stop_words()]
-    
-    # Create a DataFrame to count keyword occurrences
-    keyword_count = pd.Series(lemmatized_tokens).value_counts()
-    
-    # Assign weights to technical keywords
+
+    # Create a dictionary to count keyword occurrences by category
+    keyword_categories = defaultdict(lambda: {"count": 0, "words": set()})
     tech_keywords = get_technical_keywords()
-    keyword_weights = {word: (count * 2 if word in tech_keywords else count) for word, count in keyword_count.items()}
-    
-    # Convert to DataFrame for easier sorting
-    keyword_df = pd.DataFrame(list(keyword_weights.items()), columns=['Keyword', 'Weight'])
-    top_keywords = keyword_df.nlargest(10, 'Weight')
-    
-    return top_keywords
+
+    # Count occurrences of each token in the appropriate category
+    for token in lemmatized_tokens:
+        for category, keywords in tech_keywords.items():
+            if token in keywords:
+                keyword_categories[category]["count"] += 1
+                keyword_categories[category]["words"].add(token)  # Add the token to the words set
+                break  # Stop after finding the first matching category
+
+    return keyword_categories
 
 def main():
     combined_text = preprocess_resumes(resumes)
     keywords = extract_keywords(combined_text)
-    
-    print("Top Technical Keywords Identified:")
-    for keyword, weight in keywords.values:
-        print(f" - {keyword} (Weight: {weight:.4f})")
+
+    print("Top Technical Keywords Identified by Category:")
+    for category, data in keywords.items():
+        print(f" - {category.capitalize()}: {data['count']}")
+        print(f"   Keywords: {', '.join(data['words'])}")
 
 if __name__ == "__main__":
     main()
