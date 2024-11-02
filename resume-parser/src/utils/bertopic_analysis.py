@@ -51,7 +51,11 @@ hdbscan_model = hdbscan.HDBSCAN(min_samples=2, min_cluster_size=3)
 topic_model.hdbscan_model = hdbscan_model
 
 # Fit the model to our data
-topics, probabilities = topic_model.fit_transform(text_sections)
+try:
+    topics, probabilities = topic_model.fit_transform(text_sections)
+except Exception as e:
+    print(f"An error occurred during fitting: {e}")
+    exit()
 
 # Show topics with filtering based on topic length
 topic_info = topic_model.get_topic_info()
@@ -60,14 +64,25 @@ filtered_topic_info = topic_info[topic_info.Topic != -1]  # Exclude topic -1 (ou
 print("Filtered Topic Info:")
 print(filtered_topic_info)
 
-# Show keywords for each topic, excluding empty or overly generic topics
-print("\nKeywords Identified:")
-for i in range(len(filtered_topic_info)):
-    topic_keywords = topic_model.get_topic(i)
-    if topic_keywords:
-        print(f"Topic {i} Keywords:")
-        for keyword, weight in topic_keywords:
-            print(f" - {keyword} (Weight: {weight})")
+# Check if any topics were generated
+if filtered_topic_info.shape[0] == 0:
+    print("No topics generated. Please check the input data and topic modeling step.")
+else:
+    # Show keywords for each topic, excluding empty or overly generic topics
+    print("\nKeywords Identified:")
+    for i in range(len(filtered_topic_info)):
+        topic_keywords = topic_model.get_topic(i)
+        if topic_keywords:
+            print(f"Topic {i} Keywords:")
+            for keyword, weight in topic_keywords:
+                print(f" - {keyword} (Weight: {weight})")
 
-# Visualize topic clusters to analyze coherence
-topic_model.visualize_topics()
+    # Attempt to visualize topic clusters to analyze coherence
+    try:
+        topic_model.visualize_topics()
+    except ValueError as ve:
+        print(f"ValueError encountered during visualization: {ve}")
+    except IndexError as ie:
+        print(f"IndexError encountered during visualization: {ie}")
+    except Exception as e:
+        print(f"An unexpected error occurred during visualization: {e}")
