@@ -8,6 +8,9 @@ import hdbscan
 nltk.download("stopwords")
 nltk.download("punkt")
 
+# Additional stopwords specific to resume context
+custom_stopwords = stopwords.words("english") + ["experience", "project", "skills", "responsibilities", "role"]
+
 # Text data split into sections
 text_sections = [
     """EDUCATION: University of Illinois Urbana-Champaign, Expected May 2027, 
@@ -40,26 +43,31 @@ text_sections = [
 ]
 
 # Configure BERTopic with a custom vectorizer and adjusted HDBSCAN parameters
-vectorizer_model = CountVectorizer(stop_words="english", ngram_range=(1, 3), max_features=500)  # Adjusted max_features
+vectorizer_model = CountVectorizer(stop_words=custom_stopwords, ngram_range=(1, 3), max_features=500)
 topic_model = BERTopic(vectorizer_model=vectorizer_model)
 
 # Create HDBSCAN model with further adjusted parameters
-hdbscan_model = hdbscan.HDBSCAN(min_samples=2, min_cluster_size=2)  # Further adjusted parameters
+hdbscan_model = hdbscan.HDBSCAN(min_samples=2, min_cluster_size=3)
 topic_model.hdbscan_model = hdbscan_model
 
 # Fit the model to our data
 topics, probabilities = topic_model.fit_transform(text_sections)
 
-# Show topics
+# Show topics with filtering based on topic length
 topic_info = topic_model.get_topic_info()
-print("Topic Info:")
-print(topic_info)
+filtered_topic_info = topic_info[topic_info.Topic != -1]  # Exclude topic -1 (outliers)
 
-# Show keywords for each topic
+print("Filtered Topic Info:")
+print(filtered_topic_info)
+
+# Show keywords for each topic, excluding empty or overly generic topics
 print("\nKeywords Identified:")
-for i in range(len(topic_info)):
+for i in range(len(filtered_topic_info)):
     topic_keywords = topic_model.get_topic(i)
-    if topic_keywords:  # Check if topic has keywords
+    if topic_keywords:
         print(f"Topic {i} Keywords:")
         for keyword, weight in topic_keywords:
             print(f" - {keyword} (Weight: {weight})")
+
+# Visualize topic clusters to analyze coherence
+topic_model.visualize_topics()
