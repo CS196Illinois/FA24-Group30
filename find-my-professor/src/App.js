@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import Navbar from "./Components/Navbar.js";
-import ProfileCard from "./Components/Professor/ProfileCard.js";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./Components/Navbar"; 
+import ProfileCard from "./Components/Professor/ProfileCard"; 
+import Dashboard from "./Components/Dashboard/dashboard";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
@@ -35,60 +37,43 @@ const App = () => {
       image: "https://via.placeholder.com/150",
       details: "Professor of BioE",
     },
-    {
-      name: "name",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of MechE",
-    },
-    {
-      name: "name",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of Business",
-    },
-    {
-      name: "Name",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of Math",
-    },
-    {
-      name: "Name",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of Literature",
-    },
-    {
-      name: "Name",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of Literature",
-    },
-    {
-      name: "Name",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of Literature",
-    },
   ];
 
   return (
-    <div
-      style={{
-        backgroundColor: "#2c2c2c",
-        minHeight: "100vh",
-        padding: "20px",
-      }}
-    >
+    <Router>
       <Navbar />
-      <div className="container mt-5">
-        <div className="row">
-          {profiles.map((profile, index) => (
-            <ProfileCard
-              key={index}
-              name={profile.name}
-              image={profile.image}
-              details={profile.details}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
+      <Routes>
+        
+        <Route path="/dashboard" element={<Dashboard />} />
+        
+        
+        <Route
+          path="/"
+          element={
+            <div
+              style={{
+                backgroundColor: "#2c2c2c",
+                minHeight: "100vh",
+                padding: "20px",
+              }}
+            >
+              <div className="container mt-5">
+                <div className="row">
+                  {profiles.map((profile, index) => (
+                    <ProfileCard
+                      key={index}
+                      name={profile.name}
+                      image={profile.image}
+                      details={profile.details}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          }
+        />
+      </Routes>
+    </Router>
   );
 };
 
