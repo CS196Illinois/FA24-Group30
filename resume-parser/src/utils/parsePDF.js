@@ -1,9 +1,9 @@
-// Import pdfjsLib from pdfjs-dist
 import * as pdfjsLib from 'pdfjs-dist';
 
 // Set the workerSrc globally to avoid issues with the PDF.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
+// Parse PDF to extract text
 const parsePDF = async (file) => {
   const reader = new FileReader();
   reader.readAsArrayBuffer(file);
@@ -22,7 +22,7 @@ const parsePDF = async (file) => {
         let parsedText = '';
 
         // Loop through all the pages
-        for (let i = 1; i <= pdf.numPages; i++) {  // Start from page 1
+        for (let i = 1; i <= pdf.numPages; i++) { // Start from page 1
           const page = await pdf.getPage(i);
           const textContent = await page.getTextContent();
 
@@ -43,4 +43,23 @@ const parsePDF = async (file) => {
   });
 };
 
-export { parsePDF };
+
+// Important 
+// Important 
+// Important 
+// USE THIS TO SEND PARSED TEXT -> THIS SHOULD BE SENT TO keyword_extraction.py
+// Function to handle file parsing and return parsed text 
+// Important 
+// Important 
+// Important 
+const getParsedText = async (file) => {
+  try {
+    const parsedText = await parsePDF(file);
+    return parsedText; // Return the parsed text for further processing
+  } catch (error) {
+    console.error('Error parsing PDF:', error);
+    throw error;
+  }
+};
+
+export { parsePDF, getParsedText };

@@ -21,7 +21,15 @@ TECHNICAL_TERMS = {
     "microservices", "docker", "kubernetes", "ci/cd", "linux", "networking", "security"
 }
 
-# Sample input resumes
+# Important
+# Important
+# Important
+# Sample input resumes 
+# this will ideally be filled by the output of the parsedText which will be sent from parsePDF 
+# Important
+# Important
+# Important
+
 resumes = [
     """EDUCATION: University of Illinois Urbana-Champaign, Expected May 2027, 
     Bachelor of Science in Computer Science + Advertising, GPA: 4.0/4.0, James Scholar Honors Student""",
@@ -88,7 +96,14 @@ resumes = [
     # • Led team in coding phase of development
 ]
 
+# Important
+# Important
+# Important
+#this needs to be filled up from the research posting description 
 # Sample research posting text
+# Important
+# Important
+# Important
 research_posting = """
 Position Title: Undergraduate Research Assistant - Software Engineering (SWE)
 
@@ -110,7 +125,7 @@ def extract_technical_keywords(text, technical_terms):
     processed_text = preprocess_text(text)
     words = set(processed_text.split())
     return words.intersection(technical_terms)
-
+ 
 # Extract general keywords with lemmatization and stopword filtering
 def extract_keywords(text):
     lemmatizer = WordNetLemmatizer()
@@ -122,6 +137,14 @@ def extract_keywords(text):
     ]
     keywords = [lemmatizer.lemmatize(token) for token in tokens if token.lower() not in custom_stop_words]
     return set(keywords)
+
+# Important
+# Important
+# Important
+# run the script to extract keywords, show missing words 
+# Important
+# Important
+# Important
 
 if __name__ == "__main__":
     # Preprocess the resume and research posting texts
@@ -144,3 +167,5 @@ if __name__ == "__main__":
 
     print("\nMissing Keywords from Resume (found in Research Posting):")
     print(", ".join(sorted(missing_keywords)))
+
+    
