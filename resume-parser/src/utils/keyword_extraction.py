@@ -3,13 +3,23 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import re
-from collections import defaultdict
 
 # Ensure you have downloaded the necessary NLTK resources
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
+
+# Predefined set of highly specific technical terms for filtering
+TECHNICAL_TERMS = {
+    "algorithm", "analysis", "api", "arduino", "authentication", "backend", "bootstrap", "c",
+    "chartjs", "cloud", "computer", "data", "design", "developer", "dynamic", "embedded",
+    "engineering", "evaluation", "firebase", "firebaseauth", "frontend", "integration", "java",
+    "javascript", "learning", "machine", "natural", "python", "reactjs", "sass", "science",
+    "secure", "system", "vscode", "vuejs", "vuex", "xcode", "accelerometer", "interface",
+    "software", "prototype", "evaluation", "storage", "ml", "ai", "databases", "nlp", "big data",
+    "microservices", "docker", "kubernetes", "ci/cd", "linux", "networking", "security"
+}
 
 # Sample input resumes
 resumes = [
@@ -59,21 +69,22 @@ def preprocess_text(text):
     text = re.sub(r'[^a-zA-Z0-9\s]', '', text).lower()
     return text
 
-# Custom stop words for technical resumes
-def get_custom_stop_words():
-    custom_stop_words = set(stopwords.words('english'))
-    additional_stop_words = {
-        "experience", "internship", "project", "projects", "created", "gained", "developed",
-        "team", "used", "with", "for", "the", "of", "in", "on", "to", "and", "at",
-        "software", "app", "applications", "cloud", "data"
-    }
-    return custom_stop_words.union(additional_stop_words)
+# Extract technical keywords
+def extract_technical_keywords(text, technical_terms):
+    processed_text = preprocess_text(text)
+    words = set(processed_text.split())
+    return words.intersection(technical_terms)
 
-# Extract keywords using custom stop words
+# Extract general keywords with lemmatization and stopword filtering
 def extract_keywords(text):
     lemmatizer = WordNetLemmatizer()
     tokens = word_tokenize(text)
-    keywords = [lemmatizer.lemmatize(token) for token in tokens if token not in get_custom_stop_words()]
+    custom_stop_words = stopwords.words('english') + [
+        "experience", "internship", "project", "projects", "created", "gained", "developed",
+        "team", "used", "with", "for", "the", "of", "in", "on", "to", "and", "at",
+        "software", "app", "applications", "cloud", "data"
+    ]
+    keywords = [lemmatizer.lemmatize(token) for token in tokens if token.lower() not in custom_stop_words]
     return set(keywords)
 
 if __name__ == "__main__":
@@ -82,18 +93,18 @@ if __name__ == "__main__":
     processed_posting_text = preprocess_text(research_posting)
 
     # Extract keywords
-    resume_keywords = extract_keywords(combined_resume_text)
+    resume_keywords = extract_technical_keywords(combined_resume_text, TECHNICAL_TERMS)
     research_posting_keywords = extract_keywords(processed_posting_text)
 
     # Find missing keywords
     missing_keywords = research_posting_keywords - resume_keywords
 
     # Print extracted keywords and missing keywords
-    print("Extracted Keywords from Resume:")
-    print(", ".join(resume_keywords))
+    print("Extracted Technical Keywords from Resume:")
+    print(", ".join(sorted(resume_keywords)))
 
     print("\nExtracted Keywords from Research Posting:")
-    print(", ".join(research_posting_keywords))
+    print(", ".join(sorted(research_posting_keywords)))
 
     print("\nMissing Keywords from Resume (found in Research Posting):")
-    print(", ".join(missing_keywords))
+    print(", ".join(sorted(missing_keywords)))
