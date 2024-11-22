@@ -1,6 +1,4 @@
 import nltk
-from sklearn.feature_extraction.text import TfidfVectorizer
-import pandas as pd
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
@@ -44,11 +42,22 @@ resumes = [
     Language: English (Native), Spanish (Fluent), Marathi (Native), Hindi (Intermediate)"""
 ]
 
-# Preprocess and combine resumes
-def preprocess_resumes(resumes):
-    combined_text = "\n".join(resumes)
-    combined_text = re.sub(r'[^a-zA-Z0-9\s]', '', combined_text).lower()
-    return combined_text
+# Sample research posting text
+research_posting = """
+Position Title: Undergraduate Research Assistant - Software Engineering (SWE)
+
+Responsibilities:
+- Design and implement software solutions for research experiments, including front-end interfaces and back-end services.
+- Develop and optimize algorithms for data analysis, machine learning, and natural language processing.
+- Collaborate with team members to test, evaluate, and document research prototypes.
+- Integrate and interact with APIs for data collection and system evaluation.
+- Assist in the preparation of research papers, presentations, and technical documentation.
+"""
+
+# Preprocess and combine text
+def preprocess_text(text):
+    text = re.sub(r'[^a-zA-Z0-9\s]', '', text).lower()
+    return text
 
 # Custom stop words for technical resumes
 def get_custom_stop_words():
@@ -60,45 +69,31 @@ def get_custom_stop_words():
     }
     return custom_stop_words.union(additional_stop_words)
 
-# Define domain-specific keywords for programming, grouped by category
-def get_technical_keywords():
-    return {
-        "programming_languages": {"javascript", "java", "python", "swift", "c", "c++", "ruby", "go"},
-        "frameworks": {"react", "vue", "angular", "django", "flask", "bootstrap", "sass"},
-        "databases": {"firebase", "mongodb", "mysql", "postgresql", "sqlite"},
-        "tools": {"xcode", "vscode", "git", "docker", "kubernetes"},
-        "methodologies": {"agile", "scrum", "devops", "waterfall", "test-driven"},
-        "concepts": {"api", "algorithm", "iot", "embedded", "machine learning", "data science", "cloud computing"}
-    }
-
-# Extract keywords using TF-IDF
+# Extract keywords using custom stop words
 def extract_keywords(text):
     lemmatizer = WordNetLemmatizer()
     tokens = word_tokenize(text)
-    lemmatized_tokens = [lemmatizer.lemmatize(token) for token in tokens if token not in get_custom_stop_words()]
-
-    # Create a dictionary to count keyword occurrences by category
-    keyword_categories = defaultdict(lambda: {"count": 0, "words": set()})
-    tech_keywords = get_technical_keywords()
-
-    # Count occurrences of each token in the appropriate category
-    for token in lemmatized_tokens:
-        for category, keywords in tech_keywords.items():
-            if token in keywords:
-                keyword_categories[category]["count"] += 1
-                keyword_categories[category]["words"].add(token)  # Add the token to the words set
-                break  # Stop after finding the first matching category
-
-    return keyword_categories
-
-def main():
-    combined_text = preprocess_resumes(resumes)
-    keywords = extract_keywords(combined_text)
-
-    print("Top Technical Keywords Identified by Category:")
-    for category, data in keywords.items():
-        print(f" - {category.capitalize()}: {data['count']}")
-        print(f"   Keywords: {', '.join(data['words'])}")
+    keywords = [lemmatizer.lemmatize(token) for token in tokens if token not in get_custom_stop_words()]
+    return set(keywords)
 
 if __name__ == "__main__":
-    main()
+    # Preprocess the resume and research posting texts
+    combined_resume_text = preprocess_text(" ".join(resumes))
+    processed_posting_text = preprocess_text(research_posting)
+
+    # Extract keywords
+    resume_keywords = extract_keywords(combined_resume_text)
+    research_posting_keywords = extract_keywords(processed_posting_text)
+
+    # Find missing keywords
+    missing_keywords = research_posting_keywords - resume_keywords
+
+    # Print extracted keywords and missing keywords
+    print("Extracted Keywords from Resume:")
+    print(", ".join(resume_keywords))
+
+    print("\nExtracted Keywords from Research Posting:")
+    print(", ".join(research_posting_keywords))
+
+    print("\nMissing Keywords from Resume (found in Research Posting):")
+    print(", ".join(missing_keywords))
