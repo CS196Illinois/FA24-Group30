@@ -62,7 +62,7 @@ const ProfessorPage = () => {
               top: "50%",
               left: hovered
                 ? `${textRef.current?.offsetWidth + 415}px`
-                : "285px",
+                : "300px",
               transform: "translateY(-50%)",
               transition: "left 1s ease-in-out",
               boxShadow: "2px 2px 6px rgba(0, 0, 0, 0.4)",
@@ -91,7 +91,7 @@ const ProfessorPage = () => {
               margin: 0,
               position: "relative",
               zIndex: 1,
-              left: "25px"
+              left: "35px"
             }}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
@@ -193,6 +193,7 @@ const ProfessorPage = () => {
                   name={profile.name}
                   image={profile.image}
                   details={profile.details}
+                  link={profile.link}
                 />
               </div>
             ))}

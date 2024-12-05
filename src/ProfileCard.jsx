@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./ProfileCard.css"; // Import the CSS file for hover effect
 
-const ProfileCard = ({ name, image, details }) => {
+const ProfileCard = ({ name, image, details, link }) => {
   return (
     <div
       className="profile-card position-relative"
@@ -16,6 +16,7 @@ const ProfileCard = ({ name, image, details }) => {
         textAlign: "center",
         cursor: "pointer",
       }}
+      onClick={() => window.location.href = link}
     >
       {/* Image Section */}
       <div

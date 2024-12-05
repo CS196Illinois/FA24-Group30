@@ -2,137 +2,164 @@
     {
         "name": "John Doe",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Mathematics"
+        "details": "Professor of Mathematics",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Jane Smith",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Physics"
+        "details": "Professor of Physics",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Alice Johnson",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Chemistry"
+        "details": "Professor of Chemistry",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Bob Brown",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Biology"
+        "details": "Professor of Biology",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Charlie Davis",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of History"
+        "details": "Professor of History",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Dana Lee",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of BioE"
+        "details": "Professor of BioE",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Jane Smith",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Physics"
+        "details": "Professor of Physics",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Alice Johnson",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Chemistry"
+        "details": "Professor of Chemistry",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Bob Brown",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Biology"
+        "details": "Professor of Biology",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "John Doe",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Mathematics"
+        "details": "Professor of Mathematics",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Jane Smith",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Physics"
+        "details": "Professor of Physics",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Alice Johnson",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Chemistry"
+        "details": "Professor of Chemistry",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Bob Brown",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Biology"
+        "details": "Professor of Biology",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Charlie Davis",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of History"
+        "details": "Professor of History",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Dana Lee",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of BioE"
+        "details": "Professor of BioE",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Jane Smith",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Physics"
+        "details": "Professor of Physics",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Alice Johnson",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Chemistry"
+        "details": "Professor of Chemistry",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Bob Brown",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Biology"
+        "details": "Professor of Biology",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "John Doe",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Mathematics"
+        "details": "Professor of Mathematics",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Jane Smith",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Physics"
+        "details": "Professor of Physics",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Alice Johnson",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Chemistry"
+        "details": "Professor of Chemistry",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Bob Brown",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Biology"
+        "details": "Professor of Biology",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Charlie Davis",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of History"
+        "details": "Professor of History",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Dana Lee",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of BioE"
+        "details": "Professor of BioE",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Jane Smith",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Physics"
+        "details": "Professor of Physics",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Alice Johnson",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Chemistry"
+        "details": "Professor of Chemistry",
+        "link": "https://www.cnn.com/"
     },
     {
         "name": "Bob Brown",
         "image": "https://via.placeholder.com/150",
-        "details": "Professor of Biology"
+        "details": "Professor of Biology",
+        "link": "https://www.cnn.com/"
     }
     
 ]

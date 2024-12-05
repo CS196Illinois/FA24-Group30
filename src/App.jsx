@@ -1,11 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
-import ProfileCard from "./ProfileCard.jsx";
 import Dashboard from "./Dashboard/dashboard.jsx";
 import ProfessorPage from "./ProfessorPage.jsx"; // Import the new ProfessorPage component
 import "bootstrap/dist/css/bootstrap.min.css";
-import profiles from './profiles.json';
 
 const App = () => {
   return (
