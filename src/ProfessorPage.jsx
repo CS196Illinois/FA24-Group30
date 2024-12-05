@@ -33,7 +33,7 @@ const ProfessorPage = () => {
             alignItems: "center",
             width: "100%", // Full width for centering
             marginBottom: "20px",
-            paddingLeft: "47px"
+            paddingLeft: "60px"
           }}
         >
           {/* Magnifying Glass */}
@@ -47,7 +47,7 @@ const ProfessorPage = () => {
               position: "absolute",
               top: "50%", // Vertically centered
               left: hovered
-                ? `${textRef.current?.offsetWidth + 400}px` // End position to the right of the text
+                ? `${textRef.current?.offsetWidth + 410}px` // End position to the right of the text
                 : "285px", // Start position to the left of the text
               transform: "translateY(-50%)", // Align vertically
               transition: "left 1s ease-in-out", // Smooth horizontal animation
@@ -98,7 +98,7 @@ const ProfessorPage = () => {
             marginTop: "20px",
           }}
         >
-          Scroll to Professors
+          Professors
         </button>
       </section>
 

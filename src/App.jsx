@@ -8,21 +8,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import profiles from './profiles.json';
 
 const App = () => {
-  const Home = () => (
-    <div className="container mt-5">
-      <div className="row">
-        {profiles.map((profile, index) => (
-          <ProfileCard
-            key={index}
-            name={profile.name}
-            image={profile.image}
-            details={profile.details}
-          />
-        ))}
-      </div>
-    </div>
-  );
-
   return (
     <Router>
       <div
@@ -35,7 +20,7 @@ const App = () => {
         <Navbar />
         <Routes>
           {/* Define the home route */}
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<ProfessorPage />} />
           
           {/* Define the dashboard route */}
           <Route path="/dashboard" element={<Dashboard />} />

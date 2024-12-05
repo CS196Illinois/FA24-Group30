@@ -1,50 +1,57 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./ProfileCard.css"; // Import the CSS file for hover effect
 
-const ProfileCard = ({ name, image }) => {
+const ProfileCard = ({ name, image, details }) => {
   return (
     <div
-      className="profile-card"
+      className="profile-card position-relative"
       style={{
-        width: "250px", // Fixed width for consistency
-        margin: "10px auto", // Center the card with spacing
-        borderRadius: "8px", // Rounded corners
-        overflow: "hidden", // Clip overflowing content
-        backgroundColor: "#e0e0e0", // Light gray background
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
-        textAlign: "center", // Center align text
+        width: "250px",
+        margin: "10px auto",
+        borderRadius: "8px",
+        overflow: "hidden",
+        backgroundColor: "#e0e0e0",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+        textAlign: "center",
+        cursor: "pointer",
       }}
     >
       {/* Image Section */}
       <div
         style={{
-          height: "150px", // Fixed height for image area
-          backgroundColor: "#d3d3d3", // Placeholder background color
+          height: "150px",
+          backgroundColor: "#d3d3d3",
         }}
       >
         <img
           src={image}
           alt={name}
           style={{
-            width: "100%", // Image should span full width
-            height: "100%", // Image should span full height
-            objectFit: "cover", // Ensure the image maintains aspect ratio
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
           }}
         />
+      </div>
+
+      {/* Hover Text (Initially Hidden) */}
+      <div className="hover-text">
+        <p style={{ margin: 0, padding: "10px" }}> {details} </p>
       </div>
 
       {/* Name Section */}
       <div
         style={{
-          backgroundColor: "#333", // Dark gray background for the name section
-          color: "#fff", // White text color for contrast
-          padding: "10px", // Spacing around the text
+          backgroundColor: "#333",
+          color: "#fff",
+          padding: "10px",
         }}
       >
         <h5
           style={{
-            margin: 0, // Remove default margin
-            fontSize: "1.2rem", // Adjust font size
+            margin: 0,
+            fontSize: "1.2rem",
           }}
         >
           {name}
