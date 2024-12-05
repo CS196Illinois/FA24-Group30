@@ -1,103 +1,50 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import ProfileCard from "./ProfileCard.jsx";
+import Dashboard from "./Dashboard/dashboard.jsx";
+import ProfessorPage from "./ProfessorPage.jsx"; // Import the new ProfessorPage component
 import "bootstrap/dist/css/bootstrap.min.css";
+import profiles from './profiles.json';
 
 const App = () => {
-  const loadMore = () => {
-    // Simulate fetching more data
-    const newProfiles = [
-      { name: "Alice Johnson", image: "https://via.placeholder.com/150" },
-      { name: "Bob Brown", image: "https://via.placeholder.com/150" },
-      // Add more profiles here
-    ];
-    setProfiles((prevProfiles) => [...prevProfiles, ...newProfiles]);
-  };
-  const profiles = [
-    {
-      name: "John Doe",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of Mathematics",
-    },
-    {
-      name: "Jane Smith",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of Physics",
-    },
-    {
-      name: "Alice Johnson",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of Chemistry",
-    },
-    {
-      name: "Bob Brown",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of Biology",
-    },
-    {
-      name: "Charlie Davis",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of History",
-    },
-    {
-      name: "Dana Lee",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of BioE",
-    },
-    {
-      name: "name",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of MechE",
-    },
-    {
-      name: "name",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of Business",
-    },
-    {
-      name: "Name",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of Math",
-    },
-    {
-      name: "Name",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of Literature",
-    },
-    {
-      name: "Name",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of Literature",
-    },
-    {
-      name: "Name",
-      image: "https://via.placeholder.com/150",
-      details: "Professor of Literature",
-    },
-  ];
-
-  return (
-    <div
-      style={{
-        backgroundColor: "#2c2c2c",
-        minHeight: "100vh",
-        padding: "20px",
-      }}
-    >
-      <Navbar />
-      <div className="container mt-5">
-        <div className="row">
-          {profiles.map((profile, index) => (
-            <ProfileCard
-              key={index}
-              name={profile.name}
-              image={profile.image}
-              details={profile.details}
-            />
-          ))}
-        </div>
+  const Home = () => (
+    <div className="container mt-5">
+      <div className="row">
+        {profiles.map((profile, index) => (
+          <ProfileCard
+            key={index}
+            name={profile.name}
+            image={profile.image}
+            details={profile.details}
+          />
+        ))}
       </div>
     </div>
+  );
+
+  return (
+    <Router>
+      <div
+        style={{
+          backgroundColor: "#2c2c2c",
+          minHeight: "100vh",
+          padding: "20px",
+        }}
+      >
+        <Navbar />
+        <Routes>
+          {/* Define the home route */}
+          <Route path="/" element={<Home />} />
+          
+          {/* Define the dashboard route */}
+          <Route path="/dashboard" element={<Dashboard />} />
+
+          {/* Define the professors route to use the new ProfessorPage */}
+          <Route path="/professors" element={<ProfessorPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 

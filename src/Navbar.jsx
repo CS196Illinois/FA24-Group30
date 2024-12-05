@@ -1,5 +1,4 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -8,17 +7,12 @@ const Navbar = () => {
       style={{ backgroundColor: "#2c2c2c", color: "#fff" }}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="#" style={{ color: "#fff" }}>
-          <div className="d-flex align-items-center">
-            <div
-              className="rounded-circle bg-light text-dark d-flex justify-content-center align-items-center"
-              style={{ width: "40px", height: "40px" }}
-            >
-              LOGO
-            </div>
-            <span className="ms-2">Find My Professor</span>
-          </div>
-        </a>
+        {/* Align the navbar-brand to the left */}
+        <div className="d-flex align-items-center me-auto">
+          <Link className="navbar-brand" to="/professors" style={{ color: "#fff" }}>
+            Find My Professor
+          </Link>
+        </div>
         <button
           className="navbar-toggler"
           type="button"
@@ -36,31 +30,16 @@ const Navbar = () => {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a
-                className="nav-link"
-                href="/professors"
-                style={{ color: "#fff" }}
-              >
+              <Link className="nav-link" to="/professors" style={{ color: "#fff" }}>
                 Professors
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" style={{ color: "#fff" }}>
+              <Link className="nav-link" to="/dashboard" style={{ color: "#fff" }}>
                 Dashboard
-              </a>
+              </Link>
             </li>
           </ul>
-          <form className="d-flex ms-3">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Keyword Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-light" type="submit">
-              Search
-            </button>
-          </form>
         </div>
       </div>
     </nav>

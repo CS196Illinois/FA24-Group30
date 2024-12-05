@@ -1,0 +1,29 @@
+{
+  "professors": [
+    {
+      "name": "Dr. Alice Johnson",
+      "image": "https://via.placeholder.com/50"
+    },
+    {
+      "name": "Dr. Bob Smith",
+      "image": "https://via.placeholder.com/50"
+    },
+    {
+      "name": "Dr. Charlie Brown",
+      "image": "https://via.placeholder.com/50"
+    },
+    {
+        "name": "Dr. Alice Johnson",
+        "image": "https://via.placeholder.com/50"
+      },
+      {
+        "name": "Dr. Bob Smith",
+        "image": "https://via.placeholder.com/50"
+      },
+      {
+        "name": "Dr. Charlie Brown",
+        "image": "https://via.placeholder.com/50"
+      }
+    
+  ]
+}

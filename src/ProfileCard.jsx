@@ -1,74 +1,54 @@
-import React, { useState } from "react";
-import Navbar from "./Navbar";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const ProfileCard = ({ name, image, details }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
+const ProfileCard = ({ name, image }) => {
   return (
     <div
-      className="col-md-4 mb-4"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="profile-card"
+      style={{
+        width: "250px", // Fixed width for consistency
+        margin: "10px auto", // Center the card with spacing
+        borderRadius: "8px", // Rounded corners
+        overflow: "hidden", // Clip overflowing content
+        backgroundColor: "#e0e0e0", // Light gray background
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow for depth
+        textAlign: "center", // Center align text
+      }}
     >
+      {/* Image Section */}
       <div
-        className="card text-center"
-        style={{ backgroundColor: "#e0e0e0", borderRadius: "10px" }}
+        style={{
+          height: "150px", // Fixed height for image area
+          backgroundColor: "#d3d3d3", // Placeholder background color
+        }}
       >
-        <div className="card-body" style={{ padding: "0" }}>
-          <div
-            style={{
-              width: "100%",
-              height: "120px",
-              backgroundColor: "#d3d3d3",
-              borderTopLeftRadius: "10px",
-              borderTopRightRadius: "10px",
-            }}
-          >
-            <img
-              src={image}
-              alt="Profile"
-              style={{
-                width: "50%",
-                height: "100%",
-                objectFit: "cover",
-                borderTopLeftRadius: "10px",
-                borderTopRightRadius: "10px",
-              }}
-            />
-          </div>
-          <div
-            style={{
-              backgroundColor: "#333",
-              padding: "10px",
-              borderBottomLeftRadius: "10px",
-              borderBottomRightRadius: "10px",
-            }}
-          >
-            <h5 className="card-title" style={{ color: "#fff", margin: 0 }}>
-              {name}
-            </h5>
-          </div>
-        </div>
-        {isHovered && (
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: "rgba(0, 0, 0, 0.8)",
-              color: "#fff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              borderRadius: "10px",
-            }}
-          >
-            <p>{details}</p>
-          </div>
-        )}
+        <img
+          src={image}
+          alt={name}
+          style={{
+            width: "100%", // Image should span full width
+            height: "100%", // Image should span full height
+            objectFit: "cover", // Ensure the image maintains aspect ratio
+          }}
+        />
+      </div>
+
+      {/* Name Section */}
+      <div
+        style={{
+          backgroundColor: "#333", // Dark gray background for the name section
+          color: "#fff", // White text color for contrast
+          padding: "10px", // Spacing around the text
+        }}
+      >
+        <h5
+          style={{
+            margin: 0, // Remove default margin
+            fontSize: "1.2rem", // Adjust font size
+          }}
+        >
+          {name}
+        </h5>
       </div>
     </div>
   );
