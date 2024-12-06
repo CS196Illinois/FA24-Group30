@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import keywordsData from './keywords.json'; // Import JSON file for keywords
-import professorsData from './professors.json'; // Import JSON file for professors
+import keywordsData from './keywords.json';
+import professorsData from './professors.json';
 
 const Dashboard = () => {
+  const fileInputRef = useRef(null);
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      console.log("File selected:", file.name);
+      // Process the file here
+    }
+  };
+
+  const triggerFileInput = () => {
+    fileInputRef.current.click();
+  };
+
   return (
     <main
       className="main-content flex-grow-1 d-flex flex-column align-items-center justify-content-start px-4"
@@ -26,9 +40,16 @@ const Dashboard = () => {
             borderRadius: '8px',
             border: '1px solid #ffffff',
           }}
+          onClick={triggerFileInput}
         >
           Upload Resume Here
         </button>
+        <input
+          type="file"
+          ref={fileInputRef}
+          style={{ display: 'none' }}
+          onChange={handleFileUpload}
+        />
       </div>
       <div className="results d-flex justify-content-between w-100 px-5 mt-4">
         <div
