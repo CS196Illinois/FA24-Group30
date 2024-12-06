@@ -7,8 +7,27 @@ import { getParsedText } from './parsePDF'; // Import only the named export
 const Dashboard = () => {
   const fileInputRef = useRef(null);
   const [parsedText, setParsedText] = useState('');
+  const [keywords, setKeywords] = useState([]);
   const [error, setError] = useState('');
 
+  // Function to send parsed text to Flask server
+  const sendParsedText = async (parsedText) => {
+    try {
+      const response = await fetch('http://127.0.0.1:5001/upload', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ parsedText }),
+      });
+
+      const result = await response.json();
+      console.log("Server response:", result);
+      setKeywords(result.keywords || []); // Update keywords in state
+    } catch (error) {
+      console.error("Error sending parsed text:", error);
+    }
+  };
+
+  // Function to handle file upload
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     if (!file) {
@@ -18,9 +37,12 @@ const Dashboard = () => {
 
     console.log('File selected:', file.name);
     try {
-      const text = await getParsedText(file); // Use getParsedText
+      const text = await getParsedText(file); // Parse the PDF
       setParsedText(text); // Update parsed text
       setError(''); // Clear any previous errors
+
+      // Send parsed text to Flask server
+      await sendParsedText(text);
     } catch (err) {
       console.error('Error parsing PDF:', err);
       setError('Failed to parse PDF. Please try again.');
@@ -28,6 +50,7 @@ const Dashboard = () => {
     }
   };
 
+  // Function to trigger file input
   const triggerFileInput = () => {
     fileInputRef.current.click();
   };
@@ -77,16 +100,17 @@ const Dashboard = () => {
           }}
         >
           <h3 className="fw-bold" style={{ color: '#ffffff' }}>
-            Matching Keywords
+            Extracted Keywords
           </h3>
-          <p style={{ color: '#aaaaaa' }}>
-            Here are some research interests we found in your resume:
-          </p>
-          <ul className="list-unstyled" style={{ color: '#ffffff' }}>
-            {keywordsData.keywords.map((keyword, index) => (
-              <li key={index}>{keyword}</li>
-            ))}
-          </ul>
+          {keywords.length > 0 ? (
+            <ul className="list-unstyled" style={{ color: '#ffffff' }}>
+              {keywords.map((keyword, index) => (
+                <li key={index}>{keyword}</li>
+              ))}
+            </ul>
+          ) : (
+            <p style={{ color: '#aaaaaa' }}>No keywords found.</p>
+          )}
         </div>
         <div
           className="professors-section p-4 rounded"
