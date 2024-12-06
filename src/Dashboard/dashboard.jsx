@@ -1,16 +1,30 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import keywordsData from './keywords.json';
 import professorsData from './professors.json';
+import { getParsedText } from './parsePDF'; // Import only the named export
 
 const Dashboard = () => {
   const fileInputRef = useRef(null);
+  const [parsedText, setParsedText] = useState('');
+  const [error, setError] = useState('');
 
-  const handleFileUpload = (event) => {
+  const handleFileUpload = async (event) => {
     const file = event.target.files[0];
-    if (file) {
-      console.log("File selected:", file.name);
-      // Process the file here
+    if (!file) {
+      setError('No file selected.');
+      return;
+    }
+
+    console.log('File selected:', file.name);
+    try {
+      const text = await getParsedText(file); // Use getParsedText
+      setParsedText(text); // Update parsed text
+      setError(''); // Clear any previous errors
+    } catch (err) {
+      console.error('Error parsing PDF:', err);
+      setError('Failed to parse PDF. Please try again.');
+      setParsedText(''); // Clear text on error
     }
   };
 
@@ -116,6 +130,23 @@ const Dashboard = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div
+        className="parsed-text-section mt-4 p-4 rounded"
+        style={{
+          backgroundColor: '#2b2b2b',
+          width: '90%',
+          color: '#ffffff',
+          maxHeight: '300px',
+          overflow: 'auto',
+        }}
+      >
+        <h3 className="fw-bold">Parsed Resume Text</h3>
+        {error ? (
+          <p style={{ color: '#ff6b6b' }}>{error}</p>
+        ) : (
+          <p style={{ whiteSpace: 'pre-wrap' }}>{parsedText}</p>
+        )}
       </div>
     </main>
   );

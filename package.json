@@ -8,6 +8,7 @@
     "axios": "^1.7.7",
     "axois": "^0.0.1-security",
     "bootstrap": "5.3.3",
+    "pdfjs-dist": "^4.9.155",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^7.0.2"
