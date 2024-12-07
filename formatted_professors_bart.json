@@ -1,0 +1,170 @@
+[
+    {
+        "Name": "Tarek  Abdelzaher",
+        "Research Areas": " Wireless Sensor Networks have been proposed for a multitude of location-dependentapplications. For such systems, the cost and limitations of the hardware on sensing nodes prevent the use of range-based localization schemes. Because coarse accuracy is sufficient for most sensor network applications, solutions in range-free localization are being pursued."
+    },
+    {
+        "Name": "Tarek  Abdelzaher",
+        "Research Areas": "Internet kein Rundfunkmedium Provider haben spezifische Youtube-Caches IPaus. Spezialf\u00e4higkeiten hatten IP stark an Telefonsystemangelehnt IP behandelt."
+    },
+    {
+        "Name": "Tarek  Abdelzaher",
+        "Research Areas": "SPEED is a stateless, localized algorithm with minimal control overhead. It provides three types of real-time communication services: unicast, area-multicast and area-anycast."
+    },
+    {
+        "Name": "Vikram Adve",
+        "Research Areas": " LLVM (low level virtual machine) designed to supporttransparent, lifelong program analysis and transformation for arbitrary programs. LLVM defines a common, low-level code representation with several novel features."
+    },
+    {
+        "Name": "Vikram Adve",
+        "Research Areas": "Today's shared-memory parallel programming models are complex and error-prone. We demonstrate that apractical type and effect system can simplify parallel programming by guaranteeingdeterministic semantics."
+    },
+    {
+        "Name": "Vikram Adve",
+        "Research Areas": " Context-sensitive pointer analysis algorithms with full\" heapcloning\" are powerful but arewidely considered to be too expensive to include in production compilers. This paper shows,for the first time, that a context-sensitive, field-sensitive algorithm with fullheap cloning can indeed be both scalable and extremely fast."
+    },
+    {
+        "Name": "Saksham Agarwal",
+        "Research Areas": "Sincronia is a near-optimal network design for coflows. It can be implemented on top of any transport layer that supports priority scheduling. It uses asimple greedy mechanism to periodically order all unfinished coflows; each host sets."
+    },
+    {
+        "Name": "Saksham Agarwal",
+        "Research Areas": "hostcongestionin production clusters\u2026 to emergence of bottleneckswithin thehostinterconnect(NIC-to-\u2026 athosts)"
+    },
+    {
+        "Name": "Saksham Agarwal",
+        "Research Areas": "The spontaneous classification of cardiovascular diseases is a challenging task and can bemade more feasible with proper ECG fluctuation analysis. In this contribution we perform aqualitative analysis of the ECG data using complex Gaussian wavelets. We further analyze ECG signals using S transform toovercome the limitations of continuous wavelet transform and make the results more\u00a0\u2026"
+    },
+    {
+        "Name": "Gul A. Agha",
+        "Research Areas": "Physiological signals are significant indicators that can help anticipate harmful underlyingconditions in humans. Recent advancements in medicine and electronics have allowedmonitoring of physiological signals cost effectively and noninvasively. People living inremote areas are usually deprived of basic healthcare facilities and the available remotephysiological signals monitoring techniques make use of Bluetooth and WLAN technologies."
+    },
+    {
+        "Name": "Gul A. Agha",
+        "Research Areas": "High stress levels can prove to be dangerous especially for certain individuals such as autistic children. This paper presents the prototype design of areal-time embedded device that accurately measures heart rate and galvanic skin response."
+    },
+    {
+        "Name": "Gul A. Agha",
+        "Research Areas": "The human Autonomic Nervous System (ANS) controls the body's physiological responses, such as heart rate, electrodermal activity, temperature, and pupil diameter. In the case of children with Autism Spectrum Disorder (ASD), they sufferfrom autonomic dysregulation as reported in the past."
+    },
+    {
+        "Name": "Narendra  Ahuja",
+        "Research Areas": "We are unaware of anysurveyson \u2026 todetectfacesin a singleimage of intensity or colorimages. \u2026 Numerous techniques have been developed to detect faces in a single image."
+    },
+    {
+        "Name": "Narendra  Ahuja",
+        "Research Areas": "Self-similarity based super-resolution (SR) algorithms are able to produce visually pleasingresults without extensive training on external databases. Such algorithms exploit thestatistical prior that patches in a natural image tend to recur within and across scales of thesame image."
+    },
+    {
+        "Name": "Narendra  Ahuja",
+        "Research Areas": "Laplacian Pyramid Super-Resolution Network (LapSRN) to progressively reconstruct the sub-band residuals of high-resolution images. At each pyramid level, our model takes coarse-resolution feature mapsas input, predicts the high-frequency residuals."
+    },
+    {
+        "Name": "Ram Alagappan",
+        "Research Areas": "The immobilisation of nano-sized photocatalysts can eliminate costly andimpractical post-treatment recovery. Somecommonly employed immobilisation aids such as glass, carbonaceous substances, zeolites, ceramics, polymers, cellulosic materials and metallic agents."
+    },
+    {
+        "Name": "Ram Alagappan",
+        "Research Areas": "The environmental applications oftitanium dioxide have started after the initial TiO2 application for water splitting by Fujishimaand Honda in 1972. The synthesis of titaniumdioxide nanomaterials with high photocatalytic activity is actually a major challenge."
+    },
+    {
+        "Name": "Ram Alagappan",
+        "Research Areas": "The ozone-activated peroxymonosulfate process (O 3/PMS) is an emerging advancedoxidation process for the removal of trace organic contaminants. Its potential has been shown in distilled water, but limited research has been performed in real (waste) waters."
+    },
+    {
+        "Name": "Abdussalam Alawini",
+        "Research Areas": "An increasing amount of information is being published in structured databases andretrieved using queries. This raises the question of how query results should be cited. We present three approaches to implementing citation views."
+    },
+    {
+        "Name": "Abdussalam Alawini",
+        "Research Areas": "We analyze the submissions of 286 students as they solved Structured Query Language(SQL) homework assignments for an upper-level databases course. Databases and theability to query them are becoming increasingly essential for not only computer scientists butalso business professionals, scientists, and anyone who needs to make data-drivendecisions."
+    },
+    {
+        "Name": "Abdussalam Alawini",
+        "Research Areas": "Data provenance approaches track how the answer to a database query derive from input items. This is useful for debugging, repairing, and cleaning databases."
+    },
+    {
+        "Name": "Nancy M. Amato",
+        "Research Areas": "PRM(OBPRM) which samples points on or near Cobstacle surfaces. \u2026obstacle-basedPRM[3, 25]"
+    },
+    {
+        "Name": "Nancy M. Amato",
+        "Research Areas": "The main novelty in the authors' approach is that roadmap candidate points are chosen on C-obstacle surfaces. As a consequence, the roadmap is likely to contain difficult paths. The approach can be used for bothcollision-free path planning and for manipulation planning of contact tasks."
+    },
+    {
+        "Name": "Nancy M. Amato",
+        "Research Areas": "Probabilistic roadmap planning methods have been shown to perform well in a number ofpractical situations. Their performance degrades when paths are required to passthrough narrow passages in the free space. We propose a new method of sampling theconfiguration space in which randomly generated configurations, free or not, are retracted onto the medial axis of thefree space."
+    },
+    {
+        "Name": "Eyal  Amir",
+        "Research Areas": "InverseReinforcementLearning (IRL) is the problem oflearning the reward function underlying a Markov Decision Process. The dynamics of the system and the behaviour of an \u2026"
+    },
+    {
+        "Name": "Eyal  Amir",
+        "Research Areas": "In this thesis we present a framework \u2026liftedinferenceonfirst-ordermodels, that is,inferencewhere the main operations occur on afirst-order\u2026 First-order structure is not explicit anymore."
+    },
+    {
+        "Name": "Eyal  Amir",
+        "Research Areas": "In this paper we show how tree decomposition can be applied to reasoning with first-orderand propositional logic theories. Our motivation is two-fold. First, we are concerned with howto reason effectively with multiple knowledge bases that have overlap in content. Second, we're concerned with improving the efficiency of reasoning over a set of logical axioms."
+    },
+    {
+        "Name": "Mark Anastasio",
+        "Research Areas": "photoacoustics can provide deep speckle-freeimagingwith high \u2026 waves synergistically. Whilephotoacousticimagingis probably the fastest growing biomedicalimagingtechnology, this \u2026"
+    },
+    {
+        "Name": "Mark Anastasio",
+        "Research Areas": "Biomaterials are employed in the fields of tissue engineering and regenerative medicine. The unique environments resulting from the presence of biomaterials, cells, andtissues result in distinct challenges in regards to monitoring and assessing the results ofthese interventions."
+    },
+    {
+        "Name": "Mark Anastasio",
+        "Research Areas": "Figure 1 shows examples of conventional and aconventionalradiographs. Examples of these images are shown in figure 1, along with acon conventionalradiographof the same object for comparison."
+    },
+    {
+        "Name": "Lawrence Angrave",
+        "Research Areas": "Massive Open Online Courses (MOOCs) may provide a means for helping overcome the large gendergap in Computer Science. This study examines why women and men chose to enroll in a CS MOOC and how this is related to successful behavior in the course."
+    },
+    {
+        "Name": "Lawrence Angrave",
+        "Research Areas": "Lecture material of a sophomore large-enrollment system programming 15-weekclass was delivered solely online using a new video-based web platform. The platformprovided accurate accessible transcriptions and captioning plus a custom text-searchable interface."
+    },
+    {
+        "Name": "Lawrence Angrave",
+        "Research Areas": "Massive open online courses (MOOCs) continue to see increasing enrollment and adoption by universities. Little is known about the relationships between the ways in whichstudents choose to use MOOCs and their overall level of engagement with the course. In this paper we propose a multilevel\u00a0\u2026"
+    },
+    {
+        "Name": "Tal August",
+        "Research Areas": "As models' fluency improves, how well can evaluators detect and judgemachine-generated text? We run a study assessing non-experts' ability to distinguish human-and machine-authored text (GPT2 and GPT3) in three domains (stories,news articles, and recipes) We find that, without training, Evaluators distinguished betweenGPT3-and human-authoredText at random chance level."
+    },
+    {
+        "Name": "Tal August",
+        "Research Areas": "Reading medical papers can be a challenging experience. We explore four features enabled bynatural language processing. These include definitions of unfamiliar terms, in-situ plain language sectionsummaries, and a collection of key questions."
+    },
+    {
+        "Name": "Tal August",
+        "Research Areas": "High costs and a shortage of mental health professionals are leading to a global mentalhealth crisis. Online mental health communities can help mitigate this crisis by offering ascalable, easily accessible alternative to in-person sessions with therapists or supportgroups. People seeking emotional or psychological support online may beespecially vulnerable to the kinds of antisocial behavior that sometimes occur in online\u00a0\u2026"
+    },
+    {
+        "Name": "Brian P. Bailey",
+        "Research Areas": " multiplegenomesin aphylogeneticframework dramatically improves the precision andsensitivity ofevolutionaryinference, producing more robust results than single-genomeanalyses."
+    },
+    {
+        "Name": "Brian P. Bailey",
+        "Research Areas": "Apismellifera is a key model forsocialbehaviourand essential to global ecology through pollination. Compared with other sequencedinsects, the honeybee is the most genome- sequenced insect."
+    },
+    {
+        "Name": "Brian P. Bailey",
+        "Research Areas": "Antimicrobial peptides are small proteins with potent antibacterial,antiviral, and antifungal activity. AMPs are ubiquitous among multicellular eukaryotes, withmost plant and animal species expressing dozens of distinct AMP genes."
+    },
+    {
+        "Name": "Michael Bailey",
+        "Research Areas": "Early goal-directed therapy (EGDT) has been endorsed in the guidelines of theSurviving Sepsis Campaign. However, its effectiveness isuncertain."
+    },
+    {
+        "Name": "Michael Bailey",
+        "Research Areas": "Severe sepsis and septic shock are major causes of mortality in intensive careunit (ICU) patients. It is unknown whether progress has been made in decreasing their mortality rate."
+    },
+    {
+        "Name": "Michael Bailey",
+        "Research Areas": "Surgically induced weight loss results in better glycemic control and less need for diabetes medications. Unblindedrandomized controlled trial conducted from December 2002 through December 2006 at theUniversity Obesity Research Center in Australia."
+    }
+]
