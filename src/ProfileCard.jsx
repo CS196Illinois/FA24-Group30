@@ -21,17 +21,17 @@ const ProfileCard = ({ name, image, details, link }) => {
       {/* Image Section */}
       <div
         style={{
-          height: "150px",
-          backgroundColor: "#d3d3d3",
+          height: "300px",
+          backgroundColor: "#000000",
         }}
       >
         <img
           src={image}
           alt={name}
           style={{
-            width: "100%",
+            width: "90%",
             height: "100%",
-            objectFit: "cover",
+            objectFit: "contain",
           }}
         />
       </div>

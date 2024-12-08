@@ -1,21 +1,76 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import profiles from "./profiles.json"; // Assume the professors' data is in this file
+import { throttle } from "lodash"; // Import throttle function
+import faculty from "./CS124_Data/professorname.json";
+import professor_collection from "./CS124_Data/professorimages.json";
 import ProfileCard from "./ProfileCard.jsx";
+import professor_links from "./CS124_Data/professorlinks.json";
 
 const ProfessorPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All"); // For filtering professors
-  const [hovered, setHovered] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // For collapsing the sidebar
+  const ITEMS_PER_LOAD = 9; // Number of profiles to load at a time
+  const MIN_PROFILES = ITEMS_PER_LOAD; // Minimum number of profiles to show
+  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_LOAD);
+  const [isLoading, setIsLoading] = useState(false);
   const textRef = useRef(null);
+  const lastScrollY = useRef(0); // Track the last scroll position
+  const scrollingDown = useRef(true); // Track scroll direction
+  const [hovered, setHovered] = useState(false); // Track hover for magnifying glass
 
-  const categories = [...new Set(profiles.map((profile) => profile.details)), "All"]; // Extract unique categories
+  // Combine faculty and images
+  const combinedProfiles = faculty.faculty.map((name, index) => ({
+    name: name || "Unknown",
+    image: professor_collection.professor_collection[index] || "https://via.placeholder.com/150",
+    details: "CS Faculty",
+    links: professor_links.professor_links[index]
+  }));
 
-  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen); // Toggle sidebar visibility
+  // Profiles to display
+  const displayedProfiles = combinedProfiles.slice(0, visibleCount);
 
-  const filteredProfiles = selectedCategory === "All"
-    ? profiles
-    : profiles.filter((profile) => profile.details === selectedCategory);
+  // Handle scrolling logic
+  const handleScroll = () => {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+
+    // Determine scroll direction
+    scrollingDown.current = scrollTop > lastScrollY.current;
+
+    if (scrollingDown.current) {
+      // Scrolling down
+      if (
+        scrollTop + clientHeight >= scrollHeight - 100 && // Near the bottom
+        visibleCount < combinedProfiles.length &&
+        !isLoading
+      ) {
+        console.log("Scrolling down, loading more profiles...");
+        setIsLoading(true);
+        setTimeout(() => {
+          setVisibleCount((prev) => Math.min(prev + ITEMS_PER_LOAD, combinedProfiles.length));
+          setIsLoading(false);
+        }, 300);
+      }
+    } else {
+      // Scrolling up
+      if (scrollTop < lastScrollY.current - 300 && visibleCount > MIN_PROFILES) {
+        // Only decrease profiles when scrolling up significantly
+        console.log("Scrolling up, decreasing profiles...");
+        setVisibleCount((prev) => Math.max(prev - ITEMS_PER_LOAD, MIN_PROFILES));
+      }
+    }
+
+    // Update the last scroll position
+    lastScrollY.current = scrollTop;
+  };
+
+  // Throttle the handleScroll function
+  const throttledHandleScroll = throttle(handleScroll, 200);
+
+  // Add scroll event listener
+  useEffect(() => {
+    window.addEventListener("scroll", throttledHandleScroll);
+    return () => window.removeEventListener("scroll", throttledHandleScroll);
+  }, [visibleCount, isLoading]);
 
   const scrollToProfessors = () => {
     const element = document.getElementById("professors-section");
@@ -50,7 +105,7 @@ const ProfessorPage = () => {
             marginBottom: "20px",
           }}
         >
-          {/* Magnifying Glass */}
+          {/* Magnifying Glass Animation */}
           <div
             style={{
               width: "70px",
@@ -60,12 +115,12 @@ const ProfessorPage = () => {
               backgroundColor: "gray",
               position: "absolute",
               top: "50%",
-              left: hovered
-                ? `${textRef.current?.offsetWidth + 415}px`
-                : "300px",
+              left: hovered ? `${textRef.current?.offsetWidth + 415}px` : "300px",
               transform: "translateY(-50%)",
               transition: "left 1s ease-in-out",
               boxShadow: "2px 2px 6px rgba(0, 0, 0, 0.4)",
+              pointerEvents: "none", // Prevent interaction with the magnifying glass
+              zIndex: 1,
             }}
           >
             <div
@@ -82,7 +137,7 @@ const ProfessorPage = () => {
             />
           </div>
 
-          {/* Text */}
+          {/* Hero Text */}
           <h1
             ref={textRef}
             style={{
@@ -90,8 +145,8 @@ const ProfessorPage = () => {
               color: "#fff",
               margin: 0,
               position: "relative",
-              zIndex: 1,
-              left: "35px"
+              zIndex: 0,
+              left: "35px",
             }}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
@@ -116,89 +171,25 @@ const ProfessorPage = () => {
         </button>
       </section>
 
-      {/* Sidebar and Professors Section */}
-      <section
-        id="professors-section"
-        className="d-flex"
-        style={{
-          marginTop: "20px",
-        }}
-      >
-        {/* Collapsible Sidebar */}
-        <div
-          className="d-flex flex-column text-white p-3"
-          style={{
-            width: isSidebarOpen ? "250px" : "50px", // Collapsed width
-            backgroundColor: "#333", // Sidebar color
-            minHeight: "calc(100vh - 100px)",
-            transition: "width 0.3s ease", // Smooth collapsing effect
-            overflowY: "auto",
-            whiteSpace: "nowrap",
-            borderTopRightRadius: "15px", // Rounded top-right corner
-            borderBottomRightRadius: "15px", // Rounded bottom-right corner
-            borderTopLeftRadius: "15px",
-            borderBottomLeftRadius: "15px",
-            position: "relative",
-          }}
-        >
-          {/* Toggle Button */}
-          <button
-            onClick={toggleSidebar}
-            style={{
-              backgroundColor: "transparent",
-              border: "none",
-              color: "#fff",
-              position: "absolute",
-              top: "10px",
-              left: "50%", // Center horizontally
-              transform: "translateX(-50%)", // Adjust for exact centering
-              cursor: "pointer",
-              fontSize: "1.5rem",
-              zIndex: 1000
-            }}
-          >
-            {isSidebarOpen ? "<" : ">"}
-          </button>
-
-          {isSidebarOpen && (
-            <>
-              <ul className="list-unstyled" style = {{marginTop: "40px"}}>
-                {categories.map((category, index) => (
-                  <li
-                    key={index}
-                    onClick={() => setSelectedCategory(category)}
-                    style={{
-                      cursor: "pointer",
-                      padding: "10px",
-                      backgroundColor:
-                         selectedCategory === category ? "#444" : "transparent",
-                      borderRadius: "5px",
-                      transition: "background-color  0.3s",
-                    }}
-                  >
-                    {category}
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
+      {/* Professors Section */}
+      <section id="professors-section" className="container mt-5" style={{ flex: 1 }}>
+        <div className="row">
+          {displayedProfiles.map((profile, index) => (
+            <div className="col-md-4 mb-4" key={index}>
+              <ProfileCard name={profile.name} image={profile.image} details={profile.details} link={profile.links} />
+            </div>
+          ))}
         </div>
 
-        {/* Professors Section */}
-        <div className="container mt-5" style={{ flex: 1 }}>
-          <div className="row">
-            {filteredProfiles.map((profile, index) => (
-              <div className="col-md-4 mb-4" key={index}>
-                <ProfileCard
-                  name={profile.name}
-                  image={profile.image}
-                  details={profile.details}
-                  link={profile.link}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Loading Indicator */}
+        {isLoading && (
+          <div style={{ textAlign: "center", margin: "20px", color: "#fff" }}>Loading more...</div>
+        )}
+
+        {/* End of Profiles */}
+        {!isLoading && visibleCount >= combinedProfiles.length && (
+          <div style={{ textAlign: "center", margin: "20px", color: "#fff" }}>No more profiles!</div>
+        )}
       </section>
     </div>
   );

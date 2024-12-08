@@ -1,7 +1,7 @@
 [
     {
         "name": "John Doe",
-        "image": "https://via.placeholder.com/150",
+        "image": "src\\CS124_Data\\professor_collection\\professors (235).png",
         "details": "Professor of Mathematics",
         "link": "https://www.cnn.com/"
     },
